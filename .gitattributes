@@ -1,0 +1,2 @@
+# Keep tests in the repository, but omit them from source-code archives.
+tests export-ignore
