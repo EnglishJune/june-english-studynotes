@@ -12,7 +12,7 @@ Treat canonical JSON as the source of truth. Keep learning analysis separate fro
 
 ## Repository maintenance
 
-This complete skill directory is independently versioned in [EnglishJune/june-english-studynotes](https://github.com/EnglishJune/june-english-studynotes). Read [AGENTS.md](AGENTS.md) when maintaining its source; [README.md](README.md) is the GitHub-facing usage guide. When this directory lives at `AI_Skills/skills/src/june-smart-english-general-studynote/`, also follow the actual project's root `AGENTS.md` and `skills/AGENTS.md`, and use its target-specific backup/release tooling. A standalone clone does not require that parent project or a private plugin. Git synchronization, packaging, installation, and GitHub Releases are separate operations. Keep the skill identity and the learning workflow below unchanged unless the user requests a functional change.
+This skill is independently versioned in [EnglishJune/june-english-studynotes](https://github.com/EnglishJune/june-english-studynotes). In a source checkout, read `AGENTS.md` when maintaining its source; `README.md` is the GitHub-facing usage guide. These repository maintenance files and local development tests are omitted from the downloadable skill ZIP and are not required to run it. When maintaining the source at `AI_Skills/skills/src/june-smart-english-general-studynote/`, also follow the actual project's root `AGENTS.md` and `skills/AGENTS.md`, and use its target-specific backup/release tooling. A standalone clone or downloaded skill does not require that parent project or a private plugin. Git synchronization, packaging, installation, and GitHub Releases are separate operations. Keep the skill identity and learning behaviour unchanged unless the user requests a functional change.
 
 ## Read these references as needed
 
@@ -228,11 +228,7 @@ python scripts/render/render_latex.py <sanitized_title>_study_note.json <sanitiz
 
 Do not render `definition_en` in the learner-facing PDF; retain it only in canonical JSON/downstream data. Display CEFR as exactly `CEFR level: X`. When `--cefr-chart` is supplied, force a page break after the body, render centered `单词难度统计` plus the chart, then continue directly into `Vocabularies｜生词表` with no second forced page break. Keep the General article fonts unchanged. Match the established `te-notes-html-pdf` PDF presentation for Summary spacing, TE-style bullet note panels with IPA/POS/labels, vocabulary/phrase separation, sentence-analysis box border/padding, study-vocabulary vs database-only highlighting, sentence-analysis red underlining, and the JUNE watermark. In every `paracol` paragraph card, explicitly initialise both left and right column text colour with `\columncolor{black}` so a breakable note box cannot make continued text white after a page break. The watermark must use 218pt, opacity 0.16, gray 0.58, 60-degree rotation, Multiply blending, and an independent font that prefers Arimo, then Noto Sans, then the current General sans family.
 
-For a new/unverified environment/provider, generate and compile the smoke test first:
-
-```bash
-python3 scripts/render/pdf_smoke_test.py document.tex [--cefr-chart cefr_statistics.pdf]
-```
+For a new/unverified environment/provider, compile the actual generated study-note document with the production template, then inspect its PDF pages and compilation diagnostics before treating that provider as verified. Do not require local development tests to run a downloaded skill.
 
 Keep the existing article-font policy: Libertinus via `libertinus-otf`, `FandolSong-Regular.otf`, and `FandolHei-Regular.otf`. Do not change the article fonts. The watermark font may prefer Arimo or Noto Sans when available, but must fall back to the current General sans family so those fonts are never required for successful compilation. Do not require bundled font files.
 
@@ -295,5 +291,5 @@ Before returning results:
 - ensure every paragraph vocabulary link resolves through `lexical_id` and every occurrence offset is exact;
 - ensure no renderer/debug/audit fields leaked into final canonical JSON;
 - ensure public output hides structured JSON when configured;
-- ensure PDF font smoke test passes for the actual provider before treating that provider as verified;
+- ensure the actual generated document compiles with the approved fonts and its pages are inspected for the actual provider before treating that provider as verified;
 - ensure the LaTeX fallback ZIP recompiles independently when PDF providers are unavailable.

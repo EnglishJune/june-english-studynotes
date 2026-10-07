@@ -1,2 +1,13 @@
-# Keep tests in the repository, but omit them from source-code archives.
+# Local-only development files are also excluded from source archives.
 tests export-ignore
+scripts/render/pdf_smoke_test.py export-ignore
+debug export-ignore
+diagnostics export-ignore
+logs export-ignore
+
+# Repository maintenance files are unnecessary in the installable skill ZIP.
+README.md export-ignore
+AGENTS.md export-ignore
+.gitignore export-ignore
+.gitattributes export-ignore
+assets/cefr/README.txt export-ignore

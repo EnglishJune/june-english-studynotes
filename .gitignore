@@ -22,3 +22,13 @@ venv/
 /backups/
 /verification/
 /releases/
+
+# Local-only development tests and their fixtures
+/tests/
+/scripts/render/pdf_smoke_test.py
+/debug/
+/diagnostics/
+/logs/
+.coverage
+/htmlcov/
+/coverage.xml

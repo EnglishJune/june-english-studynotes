@@ -1,6 +1,6 @@
 # PDF runtime and template
 
-The renderer, smoke test, and fallback project use the same preamble at `assets/templates/study_notes_preamble.tex`. Generated TeX embeds it and does not need the skill directory when compiled.
+The renderer and fallback project use the same preamble at `assets/templates/study_notes_preamble.tex`. Generated TeX embeds it and does not need the skill directory when compiled.
 
 ## Source text and highlighting
 
@@ -39,11 +39,10 @@ Local compilation uses a temporary build directory and atomically writes the PDF
 
 Complete failure logs go to `<output-stem>.compile.log`, attempts to `<output-stem>.compile.json`. Retries append labelled logs. Classify the first fatal diagnostic, not routine package/font messages or a truncated tail.
 
-For an unverified provider, compile the production-template smoke test:
+For an unverified provider, compile the actual generated study-note document with the production template and inspect the resulting pages and diagnostics:
 
 ~~~bash
-python3 scripts/render/pdf_smoke_test.py smoke.tex [--cefr-chart cefr_statistics.pdf]
-python3 scripts/render/compile_pdf.py smoke.tex smoke.pdf --provider <auto|local|texlive_net> --diagnostic-log
+python3 scripts/render/compile_pdf.py article_study_notes.tex article_study_notes.pdf --provider <auto|local|texlive_net> --diagnostic-log
 ~~~
 
 `--diagnostic-log` requests the TeXLive.net log in a second compilation because the service returns either PDF or log. Routine successful remote output avoids this second request. Keep logs/metadata internal.
