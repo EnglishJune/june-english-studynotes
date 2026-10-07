@@ -136,7 +136,7 @@ DeepSeek Harness 也支持自己的项目级目录：
 
 ### 4. WorkBuddy
 
-*WorkBuddy 现有免费额度，新用户注册可使用我的邀请链接: https://www.workbuddy.cn/events/invite?inviteCode=5z9x7sjq5。*
+*WorkBuddy 现有免费额度，新用户注册可使用我的邀请链接(互相可增加积分): https://www.workbuddy.cn/events/invite?inviteCode=5z9x7sjq5*
 
 #### 安装：
 
