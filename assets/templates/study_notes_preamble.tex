@@ -1,0 +1,70 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[a4paper,top=10mm,bottom=12mm,left=9mm,right=9mm]{geometry}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{libertinus-otf}
+\usepackage{xcolor}
+\usepackage{paracol}
+\usepackage[skins,breakable]{tcolorbox}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{eso-pic}
+\usepackage{tikz}
+\usepackage{ragged2e}
+\usepackage[normalem]{ulem}
+\usepackage{xeCJKfntef}
+\usepackage{multicol}
+\usepackage{needspace}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+
+\setCJKmainfont[BoldFont=FandolSong-Bold.otf]{FandolSong-Regular.otf}
+\setCJKsansfont[BoldFont=FandolHei-Bold.otf]{FandolHei-Regular.otf}
+\newfontfamily\StudyFullwidthFont[BoldFont=FandolSong-Bold.otf]{FandolSong-Regular.otf}
+\IfFontExistsTF{Arimo}{
+  \newfontfamily\WatermarkFont{Arimo}
+}{
+  \IfFontExistsTF{Noto Sans}{\newfontfamily\WatermarkFont{Noto Sans}}{\newcommand{\WatermarkFont}{\sffamily}}
+}
+
+\definecolor{StudyRed}{HTML}{B0122C}
+\definecolor{RuleGreen}{HTML}{83A78D}
+\definecolor{NoteBG}{HTML}{E2E7BF}
+\definecolor{SummaryBG}{HTML}{DCDDDF}
+\definecolor{SentenceBG}{HTML}{F8EFE4}
+\definecolor{SentenceRule}{HTML}{8A5A2B}
+\definecolor{ExamGray}{HTML}{666666}
+
+% Source English keeps its Unicode characters, Latin quotation glyphs and
+% source spacing. Primitive character-class assignments are local to this
+% group; xeCJK's global declarations would also change Chinese punctuation.
+\newenvironment{StudyEnglish}{\begingroup
+  \addfontfeatures{Ligatures=TeXOff}
+  \XeTeXcharclass"2018=0 \XeTeXcharclass"2019=0
+  \XeTeXcharclass"201C=0 \XeTeXcharclass"201D=0
+  \XeTeXcharclass"FF02=0 \XeTeXcharclass"FF07=0
+}{\endgroup}
+\newcommand{\StudyEN}[1]{\begin{StudyEnglish}#1\end{StudyEnglish}}
+\newcommand{\StudyFWQuote}[1]{{\StudyFullwidthFont #1}}
+
+% One underline per complete selected sentence, including spaces and
+% punctuation. Interior colour/link/italic groups never create new underlines.
+\newcommand{\StudySentenceUL}[1]{%
+  \CJKunderline*[format=\color{StudyRed},thickness=0.55pt,depth=0.55ex]{#1}}
+% Vector dots keep decorative glyphs out of the PDF's source text layer.
+\newcommand{\exammark}{\bgroup
+  \markoverwith{\raisebox{-0.55ex}{\tikz{\fill[ExamGray] (0,0) circle[radius=0.3pt];}}\kern1.8pt}\ULon}
+
+\hypersetup{hidelinks}
+\columnratio{0.58}
+\setlength{\columnsep}{4mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\raggedbottom
+\fancyhf{}
+\fancyfoot[C]{{\fontsize{8}{9.4}\selectfont\color{gray}\thepage/\pageref*{LastPage}}}
+\renewcommand{\headrulewidth}{0pt}
+\pagestyle{fancy}
+\AddToShipoutPictureFG{\AtPageCenter{\begin{tikzpicture}[remember picture,overlay]\node[inner sep=0pt,opacity=0.16,blend mode=multiply,rotate=60] at (0,0) {{\color[gray]{0.58}\WatermarkFont\fontsize{218}{218}\selectfont\bfseries JUNE}};\end{tikzpicture}}}
+\begin{document}

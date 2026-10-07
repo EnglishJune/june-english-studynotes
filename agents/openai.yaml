@@ -1,0 +1,14 @@
+interface:
+  display_name: June Smart English General Studynote
+  short_description: Turn general English articles into JEnglish-style bilingual study
+    notes, HTML, and PDF.
+  icon: ../assets/icon.svg
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true

@@ -1,0 +1,8 @@
+{
+  "enabled": true,
+  "word_statistics": {
+    "enabled": true,
+    "adapter": "evp_sqlite",
+    "asset": "assets/cefr/evp.sqlite"
+  }
+}

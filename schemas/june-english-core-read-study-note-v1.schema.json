@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "june-english-core-read-study-note-v1.schema.json",
+  "title": "June English Core Read Study Note v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version","language","title","title_origin","title_inline_runs","title_zh","subtitle","subtitle_inline_runs","subtitle_zh","source","audio","is_complete_article","intro_note","sentence_analysis_depth","cefr","body","Vocabularies"],
+  "properties": {
+    "schema_version": {"const": "june-english-core-read-study-note-v1"},
+    "language": {"const": "en"},
+    "title": {"type": "string", "minLength": 1},
+    "title_origin": {"enum": ["source","generated"]},
+    "title_inline_runs": {"$ref": "#/$defs/inlineRuns"},
+    "title_zh": {"type": "string", "minLength": 1},
+    "subtitle": {"type": ["string","null"]},
+    "subtitle_inline_runs": {"$ref": "#/$defs/inlineRuns"},
+    "subtitle_zh": {"type": ["string","null"]},
+    "source": {"$ref": "#/$defs/source"},
+    "audio": {"$ref": "#/$defs/audio"},
+    "is_complete_article": {"type": "boolean"},
+    "intro_note": {
+      "oneOf": [
+        {"type": "null"},
+        {"type": "object", "additionalProperties": false,
+         "required": ["summary_zh","structure_zh","writing_features_zh"],
+         "properties": {
+           "summary_zh": {"type": "string", "minLength": 1},
+           "structure_zh": {"type": "string", "minLength": 1},
+           "writing_features_zh": {"type": "string", "minLength": 1}
+         }}
+      ]
+    },
+    "sentence_analysis_depth": {"enum": [1,2,3]},
+    "cefr": {"oneOf": [{"type": "null"},{"$ref": "#/$defs/cefr"}]},
+    "body": {"type": "array", "minItems": 1, "items": {"oneOf": [{"$ref": "#/$defs/studyHeading"},{"$ref": "#/$defs/studyParagraph"}]}},
+    "Vocabularies": {
+      "type": "object", "additionalProperties": false, "required": ["entries"],
+      "properties": {"entries": {"type": "array", "items": {"$ref": "#/$defs/lexicalEntry"}}}
+    }
+  },
+  "$defs": {
+    "inlineRun": {"type":"object","additionalProperties":false,"required":["text"],"properties":{"text":{"type":"string"},"marks":{"type":"array","items":{"const":"italic"},"uniqueItems":true}}},
+    "inlineRuns": {"type":"array","items":{"$ref":"#/$defs/inlineRun"}},
+    "source": {"type":"object","additionalProperties":false,"required":["name","url","published_date"],"properties":{"name":{"type":["string","null"]},"url":{"type":["string","null"]},"published_date":{"type":["string","null"]}}},
+    "audio": {"oneOf":[{"type":"null"},{"type":"object","additionalProperties":false,"required":["url"],"properties":{"url":{"type":"string","minLength":1}}}]},
+    "studyHeading": {"type":"object","additionalProperties":false,"required":["type","level","text","inline_runs","translation_zh"],"properties":{"type":{"const":"heading"},"level":{"enum":[1,2,3]},"text":{"type":"string","minLength":1},"inline_runs":{"$ref":"#/$defs/inlineRuns"},"translation_zh":{"type":"string","minLength":1}}},
+    "sentence": {"type":"object","additionalProperties":false,"required":["number","text","inline_runs","translation_zh","sentence_note_zh"],"properties":{"number":{"type":"integer","minimum":1},"text":{"type":"string","minLength":1},"inline_runs":{"$ref":"#/$defs/inlineRuns"},"translation_zh":{"type":"string","minLength":1},"sentence_note_zh":{"type":["string","null"]}}},
+    "paragraphVocab": {"type":"object","additionalProperties":false,"required":["surface","lemma","lexical_id","meaning_zh","note_zh"],"properties":{"surface":{"type":"string","minLength":1},"lemma":{"type":"string","minLength":1},"lexical_id":{"type":"string","minLength":1},"meaning_zh":{"type":"string","minLength":1},"note_zh":{"type":"string"}}},
+    "phraseNote": {"type":"object","additionalProperties":false,"required":["term","surface","explanation_zh","labels"],"properties":{"term":{"type":"string","minLength":1},"surface":{"type":"string","minLength":1},"explanation_zh":{"type":"string","minLength":1},"labels":{"type":"array","items":{"type":"string"},"uniqueItems":true}}},
+    "studyParagraph": {"type":"object","additionalProperties":false,"required":["type","number","text","inline_runs","paragraph_function_zh","sentences","vocabulary","phrase_notes"],"properties":{"type":{"const":"paragraph"},"number":{"type":"integer","minimum":1},"text":{"type":"string","minLength":1},"inline_runs":{"$ref":"#/$defs/inlineRuns"},"paragraph_function_zh":{"type":"string","minLength":1},"sentences":{"type":"array","minItems":1,"items":{"$ref":"#/$defs/sentence"}},"vocabulary":{"type":"array","items":{"$ref":"#/$defs/paragraphVocab"}},"phrase_notes":{"type":"array","items":{"$ref":"#/$defs/phraseNote"}}}},
+    "occurrence": {"type":"object","additionalProperties":false,"required":["paragraph","sentence","start","end","surface"],"properties":{"paragraph":{"type":"integer","minimum":1},"sentence":{"type":"integer","minimum":1},"start":{"type":"integer","minimum":0},"end":{"type":"integer","minimum":1},"surface":{"type":"string","minLength":1}}},
+    "lexicalEntry": {"type":"object","additionalProperties":false,"required":["lexical_id","lemma","forms_in_article","uk_phonetic","pos","definition_en","meaning_zh","labels","occurrences"],"properties":{"lexical_id":{"type":"string","minLength":1},"lemma":{"type":"string","minLength":1},"forms_in_article":{"type":"array","minItems":1,"items":{"type":"string","minLength":1},"uniqueItems":true},"uk_phonetic":{"type":["string","null"]},"pos":{"type":"string","minLength":1},"definition_en":{"type":"string","minLength":1},"meaning_zh":{"type":"string","minLength":1},"labels":{"type":"array","items":{"type":"string"},"uniqueItems":true},"occurrences":{"type":"array","minItems":1,"items":{"$ref":"#/$defs/occurrence"}}}},
+    "cefr": {"type":"object","additionalProperties":false,"required":["estimated_reading_level"],"properties":{"estimated_reading_level":{"enum":["A1","A2","B1","B2","C1","C2"]}}}
+  }
+}

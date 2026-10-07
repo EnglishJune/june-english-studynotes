@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "english-core-read-article-note-v1.schema.json",
+  "title": "English Core Read Article Note v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "language", "title", "title_origin", "title_inline_runs", "subtitle", "subtitle_inline_runs", "source", "audio", "body"],
+  "properties": {
+    "schema_version": {"const": "english-core-read-article-note-v1"},
+    "language": {"const": "en"},
+    "title": {"type": "string", "minLength": 1},
+    "title_origin": {"enum": ["source", "generated"]},
+    "title_inline_runs": {"$ref": "#/$defs/inlineRuns"},
+    "subtitle": {"type": ["string", "null"]},
+    "subtitle_inline_runs": {"$ref": "#/$defs/inlineRuns"},
+    "source": {
+      "type": "object", "additionalProperties": false,
+      "required": ["name", "url", "published_date"],
+      "properties": {
+        "name": {"type": ["string", "null"]},
+        "url": {"type": ["string", "null"]},
+        "published_date": {"type": ["string", "null"]}
+      }
+    },
+    "audio": {
+      "oneOf": [
+        {"type": "null"},
+        {"type": "object", "additionalProperties": false, "required": ["url"], "properties": {"url": {"type": "string", "minLength": 1}}}
+      ]
+    },
+    "body": {
+      "type": "array", "minItems": 1,
+      "items": {"oneOf": [{"$ref": "#/$defs/heading"}, {"$ref": "#/$defs/paragraph"}]}
+    }
+  },
+  "$defs": {
+    "inlineRun": {
+      "type": "object", "additionalProperties": false, "required": ["text"],
+      "properties": {
+        "text": {"type": "string"},
+        "marks": {"type": "array", "items": {"const": "italic"}, "uniqueItems": true}
+      }
+    },
+    "inlineRuns": {"type": "array", "items": {"$ref": "#/$defs/inlineRun"}},
+    "heading": {
+      "type": "object", "additionalProperties": false,
+      "required": ["type", "level", "text", "inline_runs"],
+      "properties": {
+        "type": {"const": "heading"},
+        "level": {"enum": [1,2,3]},
+        "text": {"type": "string", "minLength": 1},
+        "inline_runs": {"$ref": "#/$defs/inlineRuns"}
+      }
+    },
+    "paragraph": {
+      "type": "object", "additionalProperties": false,
+      "required": ["type", "number", "text", "inline_runs"],
+      "properties": {
+        "type": {"const": "paragraph"},
+        "number": {"type": "integer", "minimum": 1},
+        "text": {"type": "string", "minLength": 1},
+        "inline_runs": {"$ref": "#/$defs/inlineRuns"}
+      }
+    }
+  }
+}

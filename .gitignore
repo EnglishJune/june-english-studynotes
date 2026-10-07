@@ -1,0 +1,24 @@
+# macOS and Python caches
+.DS_Store
+._*
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Local environments and private configuration
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+
+# Generated run outputs and local maintenance artifacts
+/output/
+/outputs/
+/build/
+/dist/
+/backups/
+/verification/
+/releases/

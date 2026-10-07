@@ -1,21 +1,62 @@
-MIT License
+JEnglish Noncommercial License 1.0
+JEnglish 非商业使用许可 1.0
 
 Copyright (c) 2026 JEnglish
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+1. 适用范围
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+本许可适用于 june-english-studynotes 项目中 JEnglish 拥有版权并有权授权的
+原创代码、Skill 指令、文档及其他原创材料（以下称“本项目材料”）。
+第三方材料不受本许可重新授权，具体规则见第 5 条。
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+2. 非商业授权
+
+在遵守本许可的前提下，免费允许为个人学习、非商业教学、非商业学术研究，
+以及非商业测试、修改和二次开发而使用、复制、修改或分发本项目材料。
+允许在相同条件下 Fork 本项目、分享修改版本及提交贡献。
+
+分发本项目材料或其修改版本时，必须保留版权声明和完整的本许可，注明
+所做修改，并向接收者提供相同的非商业许可条件。不得移除商业限制，或
+声称自己有权将本项目材料授权给他人用于商业用途。
+
+3. 商业用途限制
+
+未经 JEnglish 事先书面授权，不允许将本项目材料或其修改版本用于商业用途。
+商业用途包括但不限于：
+
+- 出售、出租或收费提供本 Skill 或其修改版本；
+- 将其集成到收费软件、App、网站、插件、API、SaaS 或其他付费产品；
+- 使用其功能提供收费的英语学习、内容生成、咨询、培训或教育服务；
+- 将其或其生成能力用于收费课程、会员服务或商业内容生产；
+- 为商业客户部署、托管或运营，或用于企业商业部署；
+- 通过本项目材料、其修改版本或其功能直接或间接获取商业收入。
+
+仅仅公开源码、注明来源或免费提供下载，不会豁免上述商业用途限制。
+
+4. 单独商业授权
+
+需要商业使用时，请联系 GitHub 账户 EnglishJune 的维护者 JEnglish，取得
+书面商业授权。单独授权的范围、条件和费用以该书面协议为准；本文件本身
+不授予商业使用权。
+
+5. 第三方材料与其他权利
+
+第三方代码、字体、数据、词表、数据库、依赖及其他资源分别遵循其原始
+许可证和版权声明。本许可不扩大、限制或替代第三方权利人的授权，也不
+表示 JEnglish 拥有这些材料的版权。使用或分发这些材料时应另行遵守其条款。
+
+本许可不授予输入文章、外部内容或生成结果中第三方材料的版权、商标或
+其他权利；使用本 Skill 不会自动获得这些材料的使用授权。
+
+6. 免责
+
+本项目材料按现状提供。在适用法律允许的范围内，作者不对其准确性、
+可用性、适销性、特定用途适用性或不侵权作出保证，也不承担因使用、
+修改、分发或无法使用本项目材料而产生的损失或其他责任。
+
+7. 版本与既有授权
+
+本许可适用于随本文件发布的版本，不追溯撤销已经根据其他许可证合法
+授予的权利。除本许可或单独书面授权明确授予的权限外，其他权利保留。
+
+本文件是自定义非商业许可，不是 MIT License。
