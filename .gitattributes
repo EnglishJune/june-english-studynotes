@@ -11,3 +11,4 @@ AGENTS.md export-ignore
 .gitignore export-ignore
 .gitattributes export-ignore
 assets/cefr/README.txt export-ignore
+docs export-ignore
